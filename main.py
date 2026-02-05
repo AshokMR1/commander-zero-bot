@@ -9,10 +9,10 @@ import os
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 
-# ✅ Build the app
+#  Build the app
 app = ApplicationBuilder().token(BOT_TOKEN).build()
 
-# ✅ Add all command handlers
+#  Add all command handlers
 app.add_handler(CommandHandler("start", start_cmd.start))
 app.add_handler(CommandHandler("routine", routine_cmd.routine))
 app.add_handler(CommandHandler("boldness", boldness_cmd.boldness))
@@ -23,7 +23,7 @@ app.add_handler(CommandHandler("routine_now", routine_cmd.routine_now))
 app.add_handler(CommandHandler("done_pushups", routine_cmd.done_pushups))
 app.add_handler(CommandHandler("routine_status", routine_cmd.routine_status))
 
-# ✅ Add the interactive /morse conversation handler
+#  Add the interactive /morse conversation handler
 morse_conv = ConversationHandler(
     entry_points=[CommandHandler("morse", morse_cmd.morse_start)],
     states={
@@ -36,12 +36,13 @@ morse_conv = ConversationHandler(
 
 app.add_handler(morse_conv)
 
-# ✅ Optional: Handle unknown commands
+#  Optional: Handle unknown commands
 async def unknown(update, context):
     await update.message.reply_text("❌ Unknown command. Type /start or /help for guidance.")
 
 app.add_handler(MessageHandler(filters.COMMAND, unknown))
 
-# ✅ Start the bot
+#  Start the bot
 print("🪖 Commander Zero is standing by...")
 app.run_polling()
+
