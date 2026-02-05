@@ -43,6 +43,7 @@ async def unknown(update, context):
 app.add_handler(MessageHandler(filters.COMMAND, unknown))
 
 #  Start the bot
-print("🪖 Commander Zero is standing by...")
+print("Commander Zero is standing by...")
 app.run_polling()
+
 
